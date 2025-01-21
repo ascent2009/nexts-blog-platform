@@ -2,7 +2,6 @@
 
 import {useState, useRef} from "react"
 import Image from "next/image";
-import { redirect } from 'next/navigation';
 import {StyledFormContainer, StyledDate, StyledForm, StyledDiv, StyledLabel, StyledTextarea, StyledButton, StyledButtonLink, StyledButtonBlock} from "../styles/form.styled"
 import {StyledInput} from '../styles/dashboard.style';
 import "../styles/fileInput.css"
@@ -30,18 +29,6 @@ export default function Form() {
     const [checked, setСhecked] = useState(false)
 
     const imageRef = useRef("");
-
-    // let uploadButton = document.querySelector('input[type="file"]')
-    
-    // uploadButton.addEventListener('change', (e) => {
-    //     const currFiles = e.target.files
-    //     if(currFiles.length > 0){
-    //         let src = URL.createObjectURL(currFiles[0])
-    //         let imagePreview = document.getElementById('file-preview')
-    //         imagePreview.src = src
-    //         imagePreview.style.display = "block"
-    //     }
-    // })
 
     const handleChange = (e) => {
         setData({...data, [e.target.name]: e.target.value })
@@ -76,7 +63,7 @@ export default function Form() {
             if (res.ok) {
                 console.log("Your post was successfully published!");
                 return res.json();
-            }npx auth secret
+            }
             // handle error
           }).then(post => {
             alert("Your post was successfully published!");
@@ -154,8 +141,6 @@ export default function Form() {
             <StyledButtonBlock>
                 <StyledButton 
                 type="submit"
-                // type="buttom"
-                //  onClick={sendPost}
              >Create post</StyledButton>
              <StyledButtonLink as="a"
             type="button"

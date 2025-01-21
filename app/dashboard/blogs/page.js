@@ -1,23 +1,28 @@
 /* eslint-disable @next/next/no-async-client-component */
 "use client"
 
-// import Link from 'next/link';
 import Image from 'next/image'
 import { StyledBlogs, StyledBlogItem, StyledLink, StyledText, StyledTitle, StyledTextBlock, StyledAuthorBlock, StyledTagBlock, StyledTag } from '../../styles/blogs.styled';
+import Button from "../../components/Button"
 
-export default async function Blogs({posts}) {
+export default async function Blogs({posts, fetchBlogs}) {
         
+async function deleteBlog(id) {
+      try {
+        let data = await fetch(`https://673d146b4db5a341d833f71e.mockapi.io/blogs/${id}`, { method: 'DELETE' })
+        let blog = await data.json();
+        alert(`Are you sure you want to delete the blog?`)
+        alert(`Blog ${blog.title} № ${id} successfully deleted`)
+        await fetchBlogs()
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
 
-    // const filteredPosts = posts.filter(post => post["isEngineering"] === true);
-    // const foundPosts = posts.filter(post => post.title.includes("al"));
-
-
-    
     return (
       <StyledBlogs>
-          {posts.map((post) => (
+          {posts ? posts.map((post) => (
             <StyledBlogItem key={post.id}>
-              {/* <Link href={`/dashboard/blogs/${post.id}`}> */}
                 <StyledLink href={`/dashboard/blogs/${post.id}`}>
                   <StyledTextBlock>
                     <StyledTitle>{post.title}</StyledTitle>
@@ -30,7 +35,11 @@ export default async function Blogs({posts}) {
                         priority={false}
                         style={{borderRadius: "50%"}}
                       />
-                      {post.author} on {post.createdAt.slice(0, post.createdAt.indexOf("T"))}
+                      {post.author} on {new Date(post.createdAt).toLocaleDateString("en-US", {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
                     </StyledAuthorBlock>
                     <StyledText>{post.text.slice(0, 300)}...</StyledText>
                     <StyledTagBlock>
@@ -48,12 +57,22 @@ export default async function Blogs({posts}) {
                     priority={false}
                     style={{borderRadius: "10px"}}
                   />
-                  
+                
                 </StyledLink>
-            {/* </Link> */}
+                <StyledLink href={`/dashboard/blogs/${post.id}/edit`} style={{  position:"absolute", top: 15, right: 15, background: "transparent" }}>
+                  <Image
+                      src="/edit.svg"
+                      alt="go edit blog"
+                      width={40}
+                      height={40}
+                      priority={false}
+                      title="edit this blog"
+                  />
+                </StyledLink>
+                <Button deleteBlog={() => deleteBlog(post.id)} />               
           </StyledBlogItem>
-          ))}
-      </StyledBlogs>
+          )) : null}
+        </StyledBlogs>
         
     )
   }

@@ -63,7 +63,6 @@ export const StyledInput = styled.input`
   outline: none;
   border-radius: 10px;
   font-size: 0.8rem;
-  ${'' /* font-weight: bold; */}
   color: #9e9ea3;
 `
 
@@ -73,6 +72,9 @@ export const StyledSearch = styled(StyledMenuItem)`
   padding-bottom: 0;
   padding-left: 10px; 
   list-style-type: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
   &:hover {
     color: #9e9ea3;
     border-bottom: none;

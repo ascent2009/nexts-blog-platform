@@ -1,5 +1,5 @@
 'use server';
-
+import { signIn, signOut, auth } from "../../auth"
 export async function createPost() {
     let counterID = 0
     
@@ -19,4 +19,26 @@ export async function createPost() {
       // Test it out:
     // console.log(rawFormData);
     console.log("sdcssfvsdvsv");
+}
+
+export async function logIn() {
+  await signIn("github")
+  const user = await fetch('https://api.github.com/users/ascent2009')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    console.log(user);
+}
+
+export async function logOut() {
+  await signOut({redirectTo: "/"})
+}
+
+export async function fetchUser() {
+  const session = await auth();
+  return session
+}
+
+export async function LogInCred() {
+  await signIn("credentials", formData)
 }

@@ -2,10 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link';
 
 const Blog = async({params}) => {
+    
     const {id} = await params;
     let data = await fetch(`https://673d146b4db5a341d833f71e.mockapi.io/blogs/${id}`)
     let blog = await data.json();
     const {avatar, author, createdAt, text, image, title} = blog;
+
+    // const mode = localStorage.getItem("mode")
+    // console.log('mode: ', mode);
 
     const styles = {
         blog: {
@@ -17,7 +21,8 @@ const Blog = async({params}) => {
             display: "flex",
             flexDirection: "column",
             gap: "2rem",
-            fontWeight: "bold", 
+            fontWeight: "bold",
+            position: "relative", 
         },
         title: {
             color: "#696970",
@@ -46,8 +51,19 @@ const Blog = async({params}) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
+        },
+        delete: {
+            position: "absolute",
+            top: 45,
+            right: 100
         }
     }
+
+    console.log(new Date(createdAt).toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }));
 
     return (
         <main style={styles.blog}>
@@ -61,7 +77,11 @@ const Blog = async({params}) => {
                     priority={false}
                     style={{borderRadius: "50%"}}
                 />
-                      {author} on {createdAt.slice(0, createdAt.indexOf("T"))}
+                      {author} on {new Date(createdAt).toLocaleDateString("en-US", {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
             </div>
             <div style={styles.content}>
                 <Image
@@ -76,7 +96,6 @@ const Blog = async({params}) => {
                     <p style={{margin: 0}}>{text}</p>
                     <Link href="/" style={{fontWeight: "normal", color: "#5c86b5", alignSelf: "flex-end"}}>Back to posts</Link>
                 </div>
-                
             </div>
                 
         </main>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const BodyContainer = styled.body`
   margin: 0 auto;
-  background-color: #e9edf5;
+  background-color: ${props => props.mode ? "#000000" : "#e9edf5"};
   box-sizing: border-box;
   @font-face {
     font-family: 'Inter';
@@ -12,6 +12,12 @@ export const BodyContainer = styled.body`
   }
   font-family: Inter, sans-serif;
   --webkit-font-smoothing: antialiased;
+  @media (max-width: 768px) {
+    width: fit-content;
+    ${'' /* background-color: ${props => props.mode ? "#000000" : "#f7fafc"}; */}
+    margin: 0;
+  };
+  
 `
 
 

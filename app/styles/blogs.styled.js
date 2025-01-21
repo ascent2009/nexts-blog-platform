@@ -11,9 +11,7 @@ export const StyledBlogs = styled.ul`
     
 `
 export const StyledBlogItem = styled.li`
-    ${'' /* & ${StyledBlogItem}:nth-child(even) ${StyledLink} {
-        flex-direction: row-reverse;
-    } */}
+    position: relative;
 `
 
 export const StyledLink = styled.a`
@@ -41,7 +39,6 @@ export const StyledTextBlock = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    ${'' /* width: 50%; */}
     flex-grow: 1;
 `
 

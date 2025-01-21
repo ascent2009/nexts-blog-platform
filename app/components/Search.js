@@ -1,30 +1,17 @@
-// "use client"
-
+import { useRef } from "react"
 import Image from 'next/image'
 import Link from 'next/link';
 import {StyledSearchBlock, StyledInput, StyledSearch} from '../styles/dashboard.style';
-// import { usePathname, useSearchParams, useRouter  } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter  } from 'next/navigation';
 
-export default function Search({handleSearch}) {
+export default function Search({handleSearch, fetchBlogs, inputRef}) {
 
-    // const searchParams = useSearchParams();
-    // const pathname = usePathname();
-    // const { replace } = useRouter();
+    // const inputRef = useRef()
 
-    // async function handleSearch(term) {
-    //     const url = `https://673d146b4db5a341d833f71e.mockapi.io/blogs?search=${term}`;
-    //     let data = await fetch(url, { next: {revalidate: 10} })
-    //     let posts = await data.json()
-    //     // const params = new URLSearchParams(searchParams);
-    //     // if (term) {
-    //     //     params.set('query', term);
-    //     // } else {
-    //     //     params.delete('query');
-    //     // }
-    //     // replace(`${pathname}?${params.toString()}`);
-    //     // return posts;
-    //     console.log('posts: ', posts);
-    // }
+    const clearSearch = () => {
+        inputRef.current.value = " "
+        fetchBlogs()
+    }
 
     return (
         <StyledSearchBlock>
@@ -32,6 +19,7 @@ export default function Search({handleSearch}) {
                     type="text"
                     onChange={(e) => {handleSearch(e.target.value);}}
                     defaultValue=""
+                    ref={inputRef}
                 />
                 <Image
                     src="/search.svg"
@@ -40,7 +28,7 @@ export default function Search({handleSearch}) {
                     height={16}
                     priority={false}
                 />
-                <StyledSearch>Search</StyledSearch>
+                <StyledSearch as="button" onClick={clearSearch}>Clear search</StyledSearch>
                 <StyledSearch as="a" style={{marginLeft:"2rem", textDecoration: "none"}} href="/dashboard/blogs/create">+ New post</StyledSearch>
             </StyledSearchBlock>
     );
