@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import {StyledDashboard, StyledMenuBlock, StyledMenu, StyledMenuItem} from '../styles/dashboard.style';
