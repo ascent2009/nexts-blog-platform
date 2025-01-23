@@ -104,14 +104,14 @@ export default function EditForm({id}) {
                 
                 <StyledDiv as="div" style={{margin: "2rem 0" }}>
                     <StyledLabel htmlFor="avatar">Avatar</StyledLabel>
-                    <StyledInput type="file" id="avatar" name="avatar" accepts=".jpg, .jpeg, .png" className="file-input" required defaultValue={data.avatar}/>
+                    <StyledInput type="file" id="avatar" name="avatar" accepts=".jpg, .jpeg, .png" className="file-input" style={{border: "none"}} required defaultValue={data.avatar}/>
                     <StyledLabel htmlFor="author">Author</StyledLabel>
                     <StyledInput type="text" id="author" name="author" onChange={handleChange} autoComplete="on" style={{fontSize: "1rem"}} required defaultValue={data.author}/>
                 </StyledDiv>
                 <StyledDiv as="div" style={{flexDirection: "column", alignItems: "flex-start", gap: "1rem", marginBottom: "2rem" }} >
                     <StyledDiv>
                         <StyledLabel htmlFor="image">Image</StyledLabel>
-                        <StyledInput type="file" id="image" name="image" accepts=".jpg, .jpeg, .png" ref={imageRef} className="file-input" required defaultValue={data.image}/>
+                        <StyledInput type="file" id="image" name="image" accepts=".jpg, .jpeg, .png" ref={imageRef} className="file-input" style={{border: "none"}} required defaultValue={data.image} />
                         <div style={{display: "none"}}>
                         <Image 
                             id="file-preview"

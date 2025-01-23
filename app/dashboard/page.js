@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client"
 
 import {StyledDashboard, StyledMenuBlock, StyledMenu, StyledMenuItem} from '../styles/dashboard.style';
@@ -8,8 +7,6 @@ import Blogs from './blogs/page'
 import Loading from "../dashboard/loading"
 import Search from '../components/Search'
 import { Suspense } from 'react';
-import { usePathname, useSearchParams, useRouter  } from 'next/navigation';
-import Link from 'next/link';
 const metadata = {
     title: 'Dashboard',
   };

@@ -1,12 +1,12 @@
-import {logIn, logOut, fetchUser} from "../lib/actions"
-import { LinksBlock, LinkStyle, LinkButtonStyle } from "../styles/header.styled";
+import {logIn, logOut} from "../lib/actions"
+import {LinkButtonStyle, LinkMobileStyle } from "../styles/header.styled";
+import Image from "next/image";
 
 const SignIn = ({user}) => {
     
 
     
     return (
-        // <LinksBlock style={{gap: "0.5rem"}}>  
         <>
             <form action={async () => {
                 await logOut()
@@ -16,6 +16,15 @@ const SignIn = ({user}) => {
                 <LinkButtonStyle type="submit">
                     Sign Out
                 </LinkButtonStyle>
+                <LinkMobileStyle type="submit">
+                    <Image
+                        src="/logout.svg"
+                        alt="logout"
+                        width={60}
+                        height={60}
+                        priority={false}
+                    />
+                </LinkMobileStyle>
             </form>
             <form action={async () => {
                     await logIn()
@@ -23,8 +32,16 @@ const SignIn = ({user}) => {
                 }
             >
                 <LinkButtonStyle type="submit">{user ? user : "Sign In"}</LinkButtonStyle>
+                <LinkMobileStyle type="submit">
+                    <Image
+                        src={user ? "/user.svg" : "/login.svg"}
+                        alt="loggedIn"
+                        width={60}
+                        height={60}
+                        priority={false}
+                    />
+                </LinkMobileStyle>
             </form>
-    {/* </LinksBlock> */}
         </>
     );
 }

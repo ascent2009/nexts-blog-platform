@@ -1,15 +1,9 @@
-import { useRef } from "react"
 import Image from 'next/image'
-import Link from 'next/link';
-import {StyledSearchBlock, StyledInput, StyledSearch} from '../styles/dashboard.style';
-import { usePathname, useSearchParams, useRouter  } from 'next/navigation';
+import {StyledSearchBlock, StyledInput, StyledSearch, StyledSearchMobile} from '../styles/dashboard.style';
 
 export default function Search({handleSearch, fetchBlogs, inputRef}) {
 
-    // const inputRef = useRef()
-
     const clearSearch = () => {
-        inputRef.current.value = " "
         fetchBlogs()
     }
 
@@ -29,6 +23,13 @@ export default function Search({handleSearch, fetchBlogs, inputRef}) {
                     priority={false}
                 />
                 <StyledSearch as="button" onClick={clearSearch}>Clear search</StyledSearch>
+                <StyledSearchMobile as="button" onClick={clearSearch} style={{textDecoration: "none", transform: "rotate(45deg)"}}>
+                    +
+                </StyledSearchMobile>
+                <StyledSearchMobile as="a" style={{textDecoration: "none"}} href="/dashboard/blogs/create">
+                     +   
+                </StyledSearchMobile>
+                
                 <StyledSearch as="a" style={{marginLeft:"2rem", textDecoration: "none"}} href="/dashboard/blogs/create">+ New post</StyledSearch>
             </StyledSearchBlock>
     );

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link';
+import "../../../styles/blog.css"
 
 const Blog = async({params}) => {
     
@@ -8,57 +9,6 @@ const Blog = async({params}) => {
     let blog = await data.json();
     const {avatar, author, createdAt, text, image, title} = blog;
 
-    // const mode = localStorage.getItem("mode")
-    // console.log('mode: ', mode);
-
-    const styles = {
-        blog: {
-            maxWidth: "70rem",
-            margin: "0 auto 4rem",
-            padding: "3rem  5rem",
-            background: "#f7fafc",
-            borderRadius: "0 0 1rem 1rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2rem",
-            fontWeight: "bold",
-            position: "relative", 
-        },
-        title: {
-            color: "#696970",
-            fontSize: "2rem",
-            margin: 0
-        },
-        author: {
-            display: "flex",
-            maxWidth: "30rem",
-            margin: "0",
-            marginBottom: "2rem",
-            fontSize: "1.3rem",
-            color: "#83838a",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            gap: "1rem",
-            
-        },
-        content: {
-            display: "flex",
-            gap: "3rem",
-            color: "#9e9ea3",
-            lineHeight: "1.5rem",
-        },
-        text: {
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-        },
-        delete: {
-            position: "absolute",
-            top: 45,
-            right: 100
-        }
-    }
-
     console.log(new Date(createdAt).toLocaleDateString("en-US", {
         year: 'numeric',
         month: 'long',
@@ -66,9 +16,9 @@ const Blog = async({params}) => {
       }));
 
     return (
-        <main style={styles.blog}>
-            <h2 style={styles.title}>{title}</h2>
-            <div style={styles.author}>
+        <main className="blog">
+            <h2 className="blog__title">{title}</h2>
+            <div className="blog__author">
                 <Image
                     src={avatar}
                     alt={author}
@@ -83,18 +33,18 @@ const Blog = async({params}) => {
                         day: 'numeric',
                       })}
             </div>
-            <div style={styles.content}>
+            <div className='blog__content'>
                 <Image
                     src={image}
                     alt={title}
                     width={500}
                     height={400}
                     priority={false}
-                    style={{borderRadius: "1rem"}}
+                    style={{borderRadius: "1rem", flexGrow: 1, width: "100%"}}
                 />
-                <div style={styles.text}>
+                <div className='blog__content_text'>
                     <p style={{margin: 0}}>{text}</p>
-                    <Link href="/" style={{fontWeight: "normal", color: "#5c86b5", alignSelf: "flex-end"}}>Back to posts</Link>
+                    <Link href="/" className="blog__content_link">Back to posts</Link>
                 </div>
             </div>
                 

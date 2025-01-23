@@ -8,6 +8,9 @@ export const StyledBlogs = styled.ul`
     margin: 2rem 0;
     padding: 0;
     list-style: none;
+    @media (max-width: 768px) {
+        gap: 3rem;
+    };
     
 `
 export const StyledBlogItem = styled.li`
@@ -33,6 +36,10 @@ export const StyledLink = styled.a`
        background-color: #f5f5f5;
        border-radius: 20px;
     }
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 2rem;
+    };
 `
 
 export const StyledTextBlock = styled.div`
@@ -40,6 +47,7 @@ export const StyledTextBlock = styled.div`
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    gap: 2rem;
 `
 
 export const StyledAuthorBlock = styled.div`
@@ -50,16 +58,26 @@ export const StyledAuthorBlock = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 0.5rem;
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+        max-width: 30rem;
+    };
 `
 
 export const StyledTitle = styled.h2`
     font-size: 1.5rem;
     margin: 0;
+    @media (max-width: 768px) {
+        font-size: 2.5rem;
+    };
 `
 export const StyledText = styled.p`
     color: #9e9ea3;
     font-size: 0.8rem;
     margin: 0;
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    };
 `
 export const StyledTagBlock = styled.div`
     display: flex;

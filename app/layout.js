@@ -9,7 +9,6 @@ const metadata = {
     default: 'Blog platform',
   },
   description: "NextJS 15 blog project",}
-import { ThemeProvider } from "./components/theme-provider"
 import { useTheme } from "next-themes"
 import { useState } from "react";
 import Image from "next/image";
@@ -17,9 +16,6 @@ import Link from 'next/link'
 import { HeaderContainer, LogoBlock, LogoTitle, LinksBlock, LinkStyle, StyledMobileMenu, SignInMobileBlock } from "./styles/header.styled";
 import SignIn from './components/Sign-in';
 import Dropdown from './components/Dropdown';
-import Home from "./page"
-import {SignInCred} from './components/Sign-in-cred';
-
 
 export default function RootLayout({ children }) {
   
@@ -36,19 +32,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
     <BodyContainer mode={mode}>
-          {/* <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          > */}
           <Image
               src={mode && "/light.svg" || "/dark.svg"}
               alt="mode"
               width={50}
               height={50}
               priority={false}
-              style={{position: "absolute", top: 10, left: 10}}
+              style={{position: "sticky", top: 10, left: 10}}
               title="switch to dark mode"
               onClick={() => {
                 setMode(!mode);
@@ -89,11 +79,9 @@ export default function RootLayout({ children }) {
           />
         </StyledMobileMenu>
         {openMenu && <Dropdown user={user} />}
-          {/* <SignInCred /> */}
-      </HeaderContainer>
+        </HeaderContainer>
         {children} 
-      {/* </ThemeProvider> */}
-    </BodyContainer>
+      </BodyContainer>
     </html>
   );
 }

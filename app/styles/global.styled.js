@@ -14,7 +14,6 @@ export const BodyContainer = styled.body`
   --webkit-font-smoothing: antialiased;
   @media (max-width: 768px) {
     width: fit-content;
-    ${'' /* background-color: ${props => props.mode ? "#000000" : "#f7fafc"}; */}
     margin: 0;
   };
   

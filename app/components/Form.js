@@ -97,14 +97,14 @@ export default function Form() {
             
             <StyledDiv as="div" style={{margin: "2rem 0" }}>
                 <StyledLabel htmlFor="avatar">Avatar</StyledLabel>
-                <StyledInput type="file" id="avatar" name="avatar" accepts=".jpg, .jpeg, .png" className="file-input" required/>
+                <StyledInput type="file" id="avatar" name="avatar" accepts=".jpg, .jpeg, .png" className="file-input" style={{border: "none"}} required/>
                 <StyledLabel htmlFor="author">Author</StyledLabel>
                 <StyledInput type="text" id="author" name="author" onChange={handleChange} autoComplete="on" style={{fontSize: "1rem"}} required/>
             </StyledDiv>
             <StyledDiv as="div" style={{flexDirection: "column", alignItems: "flex-start", gap: "1rem", marginBottom: "2rem" }} >
                 <StyledDiv>
                     <StyledLabel htmlFor="image">Image</StyledLabel>
-                    <StyledInput type="file" id="image" name="image" accepts=".jpg, .jpeg, .png" ref={imageRef} className="file-input" required/>
+                    <StyledInput type="file" id="image" name="image" accepts=".jpg, .jpeg, .png" ref={imageRef} className="file-input" style={{border: "none"}} required/>
                     <div style={{display: "none"}}>
                       <Image 
                         id="file-preview"

@@ -16,8 +16,7 @@ export async function createPost() {
         marketing: formData.get('marketing'),
         company: formData.get('company'),
       };
-      // Test it out:
-    // console.log(rawFormData);
+      
     console.log("sdcssfvsdvsv");
 }
 

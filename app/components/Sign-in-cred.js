@@ -1,6 +1,5 @@
 
 import { LogInCred } from "../lib/actions"
-// import { signIn } from "../../auth"
  
 export function SignInCred() {
   return (

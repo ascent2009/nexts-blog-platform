@@ -1,6 +1,5 @@
 "use client"
 
-// import styles from "./page.module.css";
 import { StyledContainer } from "./styles/container.styled"; 
 import Dashboard from "./dashboard/page";
 
